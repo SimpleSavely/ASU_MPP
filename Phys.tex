@@ -1,0 +1,61 @@
+\section{Физика}
+\subsection{Механика}
+\subsubsection{Уравнение Эйлера-Лагранжа}
+Лагранжиан:
+$$L(q_{i},\dot q_{i},t)=T-V$$
+$T$ - кинетическая энергия системы\\
+$V$ - потенциальная энергия системы\\
+n - число степеней свободы\\\\
+Уравнение Эйлера-Лагранжа для $n$ степеней совободы:
+\begin{equation*}
+ \begin{cases}
+   $$\frac{d}{dt}\frac{\partial L}{\partial \dot q_{1}}-\frac{\partial L}{\partial q_{1}} = 0$$\\
+   $$\frac{d}{dt}\frac{\partial L}{\partial \dot q_{2}}-\frac{\partial L}{\partial q_{2}} = 0$$\\
+   ...\\
+   $$\frac{d}{dt}\frac{\partial L}{\partial \dot q_{n}}-\frac{\partial L}{\partial q_{n}} = 0$$
+ \end{cases}
+\end{equation*}
+
+\subsubsection{Интегралы движения}
+Уравнение движения имеет вид:
+$$\ddot q = F(q,\dot q,t)$$
+Для $n$ степеней свободы:
+$$q = q(q_{1},...,q_{n})$$
+$q$ - обобщенный вектор координат
+\begin{equation*}
+ \begin{cases}
+   $$\ddot q_{1} = F(q_{1},...,q_{n},\dot q_{1},...,\dot q_{n},t)$$\\
+   $$\ddot q_{2} = F(q_{1},...,q_{n},\dot q_{1},...,\dot q_{n},t)$$\\
+   ...\\
+   $$\ddot q_{n} = F(q_{1},...,q_{n},\dot q_{1},...,\dot q_{n},t)$$
+ \end{cases}
+\end{equation*}
+При решении данной системы дифференциальных уравнений второго порядка получим решение:
+$$q=q(t,C_{1},C_{2},...,C_{2n})$$
+$C_{1},C_{2},...,C_{2n}$ - константы, называемые интегралами движения.\\\\
+Три "главных" интеграла движения:
+\begin{enumerate}
+    \item Время однородно - уравнение движения системы не зависит от начального момента времени
+    $$L=L(q,\dot q)\longrightarrow \frac{dL}{dt}=0$$
+    $$\sum_{i}\frac{\partial L}{\partial \dot q_{i}}\dot q-L=const=E$$
+    Полная энергия замкнутой системы не меняется;
+    \item Пространство однородно - уравнение движения системы сохраняется при смещении ее в пространстве (При отсутствии влияния внешних полей и объектов)
+    $$L=L(t,q)$$
+    $$\sum_{i}\frac{\partial L}{\partial \dot q_{i}}=const=\textbf{P}$$
+    Закон сохранения импульса;
+    \item Пространство изотропно - при повороте системы вокруг некой оси уравнение движения не меняется.\\
+    $\overline{\varphi}$ - вектор угла поворота системы (перпендикулярен плоскости вращения, по модулю равен углу поворота)\\
+    Изменения обобщенных координат и скорости выражаются через векторные произведения:
+    \begin{equation*}
+     \begin{cases}
+       $$\delta q=[\delta\overline{\varphi},q]$$\\
+       $$\delta\dot q=[\delta\overline{\varphi},\dot q]$$
+     \end{cases}
+    \end{equation*}
+    $$\delta L = \sum_{i} \frac{\partial L}{\partial q_{i}}\delta q_{i} + \frac{\partial L}{\partial \dot q_{i}}\delta \dot q_{i} =\left\{\frac{\partial L}{\partial q_{i}} = \dot p_{i}, \frac{\partial L}{\partial \dot q_{i}} = p_{i} \right\}= \delta \overline{\varphi}\frac{d}{dt}\sum_{i}\textbf{q}_{i}\times \textbf{p}_{i}=0$$
+    $$\sum_{i}\textbf{q}_{i}\times \textbf{p}_{i} = const = \textbf{L}$$
+    Закон сохранения момента импульса
+\end{enumerate}
+
+
+\subsection{Общая теория колебаний}

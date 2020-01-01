@@ -1,0 +1,125 @@
+%\begin{document}
+
+\section{Программирование}
+
+
+\subsection{Численные методы}
+
+\subsubsection{Аппроксимация}
+Известны данные $(t_{i},b_{i});i=1,...,m$
+$$b(t)-?$$
+Рассмотрим линейную модель (комбинация модельных функций линейна)
+$$b_{i}=x_{1}\phi_{1}(t_{i})+x_{2}\phi_{2}(t_{i})+...+x_{n}\phi_{n}(t_{i})$$
+$\phi_{i}(t)-$модельные функции(задаем сами)\\
+$x_{i}-$параметры модели\\\\
+Введем матрицу $A$ $m\times n$, где $m$-число данных, $n$-количество модельных функций
+$$a_{ij}=\left(A\right)_{ij}=\phi_{j}(t_{i})$$
+\begin{equation*}
+A = \left(
+\begin{array}{cccc}
+\phi_{1}(t_{1}) & \phi_{2}(t_{1}) & \ldots & \phi_{n}(t_{1})\\
+\phi_{1}(t_{2}) & \phi_{2}(t_{2}) & \ldots & \phi_{n}(t_{2})\\
+\vdots & \vdots & \ddots & \vdots\\
+\phi_{1}(t_{m}) & \phi_{2}(t_{m}) & \ldots & \phi_{n}(t_{m})
+\end{array}
+\right)
+\end{equation*}
+В таком случае задачу можно переписать в виде:
+$$b\approx Ax\Longrightarrow b-Ax\approx 0$$
+$r=b-Ax$ --- вектор невязок\\
+$$r\longrightarrow 0\Leftrightarrow \min_{x}\sum_{j=1}^{m}[(b-Ax)_{j}]^{2}=\min_{x}||b-Ax||_{2}^{2}=(b-Ax)^{T}(b-Ax)$$
+Можно ввести веса $\omega_{j}:$ $$\min_{x}\sum_{j=1}^{m}[\omega_{j}(b-Ax)_{j}]^{2}$$
+где $\omega_{j}=\frac{1}{\epsilon_{j}}$,$\epsilon_{j}$ --- ошибка измерения в $j$-ой точке\\\\
+\textbf{Нахождение параметров модели:}
+\begin{enumerate}
+    \item Нормальные уравнения
+    $$r^{2}=(b-Ax)^{T}(b-Ax)=b^{T}b-2b^{T}Ax+x^{T}A^{T}Ax\longrightarrow min$$
+    $$\frac{d(r^{2})}{dx}=0\Longrightarrow (A^{T}A)x=(A^{T}b)$$
+    \item Ортоганальные факторизации\\
+    Ортоганальное преобразование --- домножение на $P$: $P^{T}P=1$
+    \item Преобразование Хаусхолдера
+    $$P=1-2\frac{\mathcal{V}\mathcal{V}^{T}}{\mathcal{V}^{T}\mathcal{V}}$$
+    Позволяет привести матрицу $A$ к верхнетреугольному виду, сохраняя норму.\\
+    Пусть $a$ --- произвольный вектор-столбец, тогда:
+    \begin{equation*}
+    a = \left(
+    \begin{array}{cccc}
+    a_{1}\\
+    a_{2}\\
+    \vdots\\
+    a_{m}
+    \end{array}
+    \right)
+    \end{equation*}
+    \begin{equation*}
+    Pa = \left(
+    \begin{array}{cccc}
+    \alpha\\
+    0\\
+    \vdots\\
+    0
+    \end{array}
+    \right)
+    \end{equation*}
+    $\alpha=||a||_{2}$\\\\
+    Пример:
+\begin{equation*}
+A = \left(
+\begin{array}{cccc}
+\times & \times & \times \\
+\times & \times & \times \\
+\times & \times & \times \\
+\times & \times & \times
+\end{array}
+\right)
+\end{equation*}
+\begin{equation*}
+PA = \left(
+\begin{array}{cccc}
+\alpha & \times & \times \\
+0 & \times & \times \\
+0 & \times & \times \\
+0 & \times & \times
+\end{array}
+\right)
+\end{equation*}
+\begin{equation*}
+P_{1}PA = \left(
+\begin{array}{cccc}
+1 & 0 \\
+0 & \overline{P}
+\end{array}
+\right)
+\left(
+\begin{array}{cccc}
+\alpha & \times & \times \\
+0 & \overline{\alpha} & \times \\
+0 & 0 & \times \\
+0 & 0 & \times
+\end{array}
+\right)
+\end{equation*}
+\begin{equation*}
+P_{2}P_{1}PA = \left(
+\begin{array}{cccc}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & \widetilde{P}
+\end{array}
+\right)
+\left(
+\begin{array}{cccc}
+\alpha & \times & \times \\
+0 & \overline{\alpha} & \times \\
+0 & 0 & \widetilde{\alpha} \\
+0 & 0 & 0
+\end{array}
+\right)
+\end{equation*}
+Формула для $\mathcal{V}$:\\
+$$Pa=\alpha(1,0,...,0)^{T}=\alpha e_{1}\Longrightarrow Pa=\left(P=1-2\frac{\mathcal{V}\mathcal{V}^{T}}{\mathcal{V}^{T}\mathcal{V}}\right)a=\alpha e_{1}$$
+Отсюда:
+$$\mathcal{V}=a\pm ||a||_{2}e_{1}$$
+    \end{enumerate}
+
+%\end{document}
